@@ -33,7 +33,7 @@
 #define TBB 3
 #define CPP 4
 
-#if(__cplusplus < 201103L)
+#if(__cplusplus < 201103L) && !defined(_MSV_VER)
 #error "This library needs a C++11 compliant compiler"
 #endif
 
