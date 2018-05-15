@@ -77,7 +77,9 @@ using mc_device_vector = thrust::device_vector<T>;
  * to the device.
  */
 template<typename T>
-using mc_host_vector = thrust::host_vector<T, thrust::cuda::experimental::pinned_allocator<T>>;
+using mc_host_vector = thrust::host_vector<T>;
+//using mc_host_vector = thrust::host_vector<T, thrust::cuda::experimental::pinned_allocator<T>>;
+
 
 #elif(MCBOOSTER_BACKEND == TBB)
 /*!
