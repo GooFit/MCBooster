@@ -27,7 +27,7 @@
 #ifndef VECTOR4R_H_
 #define VECTOR4R_H_
 
-#include <mcbooster/Config.h>
+#include <thrust/detail/config.h>
 #include <mcbooster/GTypes.h>
 #include <cmath>
 #include <iostream>

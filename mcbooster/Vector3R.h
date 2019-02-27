@@ -27,7 +27,7 @@
 #ifndef VECTOR3R_H_
 #define VECTOR3R_H_
 
-#include <mcbooster/Config.h>
+#include <thrust/detail/config.h>
 #include <mcbooster/GTypes.h>
 #include <iosfwd>
 #include <iostream>
