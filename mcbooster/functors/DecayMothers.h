@@ -199,12 +199,12 @@ struct DecayMothers {
         return wt;
     }
 
-    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT2 &particles) {
+    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT2 particles) {
         // do nothing, will never be called
         return 0.0;
     }
 
-    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT3 &particles) {
+    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT3 particles) {
         Vector4R *_Particles[3];
 
         _Particles[0] = &thrust::get<0>(particles);
@@ -214,7 +214,7 @@ struct DecayMothers {
         return process(evt, _Particles);
     }
 
-    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT4 &particles) {
+    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT4 particles) {
         Vector4R *_Particles[4];
 
         _Particles[0] = &thrust::get<0>(particles);
@@ -225,7 +225,7 @@ struct DecayMothers {
         return process(evt, _Particles);
     }
 
-    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT5 &particles) {
+    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT5 particles) {
         Vector4R *_Particles[5];
 
         _Particles[0] = &thrust::get<0>(particles);
@@ -237,7 +237,7 @@ struct DecayMothers {
         return process(evt, _Particles);
     }
 
-    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT6 &particles) {
+    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT6 particles) {
         Vector4R *_Particles[6];
 
         _Particles[0] = &thrust::get<0>(particles);
@@ -250,7 +250,7 @@ struct DecayMothers {
         return process(evt, _Particles);
     }
 
-    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT7 &particles) {
+    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT7 particles) {
         Vector4R *_Particles[7];
 
         _Particles[0] = &thrust::get<0>(particles);
@@ -264,7 +264,7 @@ struct DecayMothers {
         return process(evt, _Particles);
     }
 
-    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT8 &particles) {
+    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT8 particles) {
         Vector4R *_Particles[8];
 
         _Particles[0] = &thrust::get<0>(particles);
@@ -279,7 +279,7 @@ struct DecayMothers {
         return process(evt, _Particles);
     }
 
-    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT9 &particles) {
+    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT9 particles) {
         Vector4R *_Particles[9];
 
         _Particles[0] = &thrust::get<0>(particles);
@@ -295,7 +295,7 @@ struct DecayMothers {
         return process(evt, _Particles);
     }
 
-    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT10 &particles) {
+    __host__ __device__ inline GReal_t operator()(const GInt_t evt, GT10 particles) {
         Vector4R *_Particles[10];
 
         _Particles[0] = &thrust::get<0>(particles);
