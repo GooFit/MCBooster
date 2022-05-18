@@ -73,8 +73,9 @@ Many other possibilities and functionaties, bounded only by the creativity of th
 The Latest Version
 ------------------
 
-The latest version can be found on the 
-[project relases page](https://github.com/MultithreadCorner/MCBooster/releases).
+The latest released version of the original repo can be found on the
+[project relases page](https://github.com/MultithreadCorner/MCBooster/releases).  For
+GooFit, explicit releases are not made.
 
 Documentation
 -------------
@@ -136,7 +137,7 @@ The program print some events and timing information to sdtout and plotsthe dist
 Licensing
 ---------
 
-MCBooster is released under the [GNU General Public License version 3](http://www.gnu.org/licenses/gpl-3.0.en.html). Please see the file called [COPYING](https://github.com/MultithreadCorner/MCBooster/blob/master/COPYING).
+GooFit/MCBooster is available under the BSD 3-clause license. Please see the file called [COPYING](https://github.com/GooFit/MCBooster/blob/master/COPYING).
 
 Contact the developers
 ----------------------
@@ -150,7 +151,7 @@ Here’s what you should do if you need help or would like to contribute:
 Author
 --------
 
-MCBooster was created and is mantained by [Antonio Augusto Alves Jr](@AAAlvesJr).
+MCBooster was created by [Antonio Augusto Alves Jr](@AAAlvesJr).
 
 Acknowledgement
 ---------------
