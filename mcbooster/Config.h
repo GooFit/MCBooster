@@ -41,6 +41,6 @@
 #include <omp.h>
 #endif
 
-#include <thrust/detail/config/host_device.h>
+#include <thrust/detail/config.h>
 
 #endif /* CONFIG_H_ */
