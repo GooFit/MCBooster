@@ -1,6 +1,11 @@
 webpage/
 build/
+build*/
 .settings/
 .cproject
 .project
+
+# Symlink to AGENTS.md
+CLAUDE.md
+.claude/
 

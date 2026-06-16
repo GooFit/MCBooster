@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: ${{ matrix.compiler }} / ${{ matrix.backend }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - compiler: gcc
+            backend: CPP
+          - compiler: gcc
+            backend: OMP
+          - compiler: clang
+            backend: CPP
+          - compiler: clang
+            backend: OMP
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Clang and OpenMP
+        if: matrix.compiler == 'clang'
+        run: sudo apt-get update && sudo apt-get install -y clang libomp-dev
+
+      - name: Select compiler
+        run: |
+          if [ "${{ matrix.compiler }}" = "clang" ]; then
+            echo "CC=clang" >> "$GITHUB_ENV"
+            echo "CXX=clang++" >> "$GITHUB_ENV"
+          else
+            echo "CC=gcc" >> "$GITHUB_ENV"
+            echo "CXX=g++" >> "$GITHUB_ENV"
+          fi
+
+      - name: Configure
+        run: cmake -S tests -B build -DCMAKE_BUILD_TYPE=Release -DMCBOOSTER_BACKEND=${{ matrix.backend }}
+
+      - name: Build
+        run: cmake --build build -j
+
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
