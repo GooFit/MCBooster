@@ -26,6 +26,7 @@
 
 #include <thrust/host_vector.h>
 #include <thrust/complex.h>
+#include <thrust/version.h>
 
 namespace mcbooster {
 
@@ -60,6 +61,99 @@ typedef std::vector<RealVector_h *>
     VariableSet_h; /*! Typedef for a STL vector of pointers to host RealVector_h vectors.*/
 
 //-----------------------------------------------------------------------
+
+// GTn / GTRn are the value (reference) types produced by dereferencing the
+// zip iterators used by the decay/evaluate functors. Thrust shipped with
+// CUDA 12+ (CCCL 2.x) made tuple_of_iterator_references variadic, so the old
+// null_type-padded 10-element form no longer matches a zip of N iterators.
+// Define the unpadded variadic form there, and keep the padded form for the
+// pre-2.0 (CUDA <= 11) Thrust still bundled for the host backends.
+#if THRUST_VERSION >= 200000
+
+typedef thrust::detail::tuple_of_iterator_references<Vector4R &> GT1;
+typedef thrust::detail::tuple_of_iterator_references<Vector4R &, Vector4R &> GT2;
+typedef thrust::detail::tuple_of_iterator_references<Vector4R &, Vector4R &, Vector4R &> GT3;
+typedef thrust::detail::tuple_of_iterator_references<Vector4R &, Vector4R &, Vector4R &, Vector4R &> GT4;
+typedef thrust::detail::tuple_of_iterator_references<Vector4R &, Vector4R &, Vector4R &, Vector4R &, Vector4R &> GT5;
+typedef thrust::detail::
+    tuple_of_iterator_references<Vector4R &, Vector4R &, Vector4R &, Vector4R &, Vector4R &, Vector4R &>
+        GT6;
+typedef thrust::detail::
+    tuple_of_iterator_references<Vector4R &, Vector4R &, Vector4R &, Vector4R &, Vector4R &, Vector4R &, Vector4R &>
+        GT7;
+typedef thrust::detail::tuple_of_iterator_references<Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &>
+    GT8;
+typedef thrust::detail::tuple_of_iterator_references<Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &>
+    GT9;
+typedef thrust::detail::tuple_of_iterator_references<Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &>
+    GT10;
+
+typedef thrust::detail::tuple_of_iterator_references<GReal_t &, Vector4R &> GTR2;
+typedef thrust::detail::tuple_of_iterator_references<GReal_t &, Vector4R &, Vector4R &> GTR3;
+typedef thrust::detail::tuple_of_iterator_references<GReal_t &, Vector4R &, Vector4R &, Vector4R &> GTR4;
+typedef thrust::detail::tuple_of_iterator_references<GReal_t &, Vector4R &, Vector4R &, Vector4R &, Vector4R &> GTR5;
+typedef thrust::detail::
+    tuple_of_iterator_references<GReal_t &, Vector4R &, Vector4R &, Vector4R &, Vector4R &, Vector4R &>
+        GTR6;
+typedef thrust::detail::
+    tuple_of_iterator_references<GReal_t &, Vector4R &, Vector4R &, Vector4R &, Vector4R &, Vector4R &, Vector4R &>
+        GTR7;
+typedef thrust::detail::tuple_of_iterator_references<GReal_t &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &>
+    GTR8;
+typedef thrust::detail::tuple_of_iterator_references<GReal_t &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &>
+    GTR9;
+typedef thrust::detail::tuple_of_iterator_references<GReal_t &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &,
+                                                     Vector4R &>
+    GTR10;
+
+#else
 
 /*! GT1 iterator is a typedef for thrust::detail::tuple_of_iterator_references<Vector4R &,...> */
 typedef thrust::detail::tuple_of_iterator_references<Vector4R &,
@@ -335,5 +429,7 @@ typedef thrust::detail::tuple_of_iterator_references<GReal_t &,
                                                      Vector4R &,
                                                      Vector4R &>
     GTR10;
+
+#endif
 }
 #endif /* GCONTAINERS_H_ */
